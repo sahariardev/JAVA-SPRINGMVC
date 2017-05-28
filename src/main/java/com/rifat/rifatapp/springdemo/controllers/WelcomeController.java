@@ -37,5 +37,6 @@ public class WelcomeController {
 	{
 		return "welcomeNew2";
 	}
+	
 
 }

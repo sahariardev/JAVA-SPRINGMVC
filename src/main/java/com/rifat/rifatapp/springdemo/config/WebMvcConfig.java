@@ -1,7 +1,8 @@
-package com.rifat.springdemo.config;
+package com.rifat.rifatapp.springdemo.config;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
@@ -22,12 +23,25 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 @Configuration
-@ComponentScan("com.rifat.springdemo")
+@ComponentScan("com.rifat.rifatapp.springdemo")
 @EnableWebMvc
 public class WebMvcConfig implements WebMvcConfigurer {
 
+	@Bean 
+	public UrlBasedViewResolver ulrbasedviewresolver()
+	{
+		UrlBasedViewResolver resolver=new UrlBasedViewResolver();
+		
+		resolver.setPrefix("/WEB-INF/views/");
+		resolver.setSuffix(".jsp");
+		resolver.setViewClass(JstlView.class);
+		
+		return resolver;
+	}
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> arg0) {
 		// TODO Auto-generated method stub
